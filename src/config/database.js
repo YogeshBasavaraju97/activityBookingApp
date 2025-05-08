@@ -11,7 +11,7 @@ const connectDb = async () => {
 
   } catch (err) {
     console.error("Seeding failed:", err.message);
-    throw err;
+
 
   }
 };
