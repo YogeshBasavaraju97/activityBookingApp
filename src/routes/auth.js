@@ -11,6 +11,13 @@ authRoutes.post("/signup", async (req, res) => {
   try {
     validateSignUp(req);
     const { name, emailId, phoneNumber, password } = req.body;
+
+    if (emailId) {
+      const existingBuyerByEmail = await User.findOne({ emailId });
+      if (existingBuyerByEmail) {
+        return res.status(400).send("Email already registered.");
+      }
+    }
     const hashPassword = await bcrypt.hash(password, 10);
     //creating new instance
     const user = new User({

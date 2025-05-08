@@ -1,9 +1,10 @@
 const express = require("express");
 const activityRoutes = express.Router();
 const Activity = require("../models/activity");
+const auth = require("../middleware/auth");
 
 
-activityRoutes.post("/activities", async (req, res) => {
+activityRoutes.post("/activities", auth, async (req, res) => {
 
   try {
     const { title, description, location, date, time } = req.body;

@@ -1,7 +1,8 @@
 
 require("dotenv").config();
 const express = require("express");
-const connectDB = require('./config/database');
+const serverless = require("serverless-http");
+const connectDB = require('../config/database');
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
 
@@ -12,9 +13,9 @@ app.use(cors());
 app.use(express.json());
 app.use(cookieParser());
 
-const auth = require('./routes/auth');
-const activity = require('./routes/activity');
-const booking = require('./routes/booking');
+const auth = require('../routes/auth');
+const activity = require('../routes/activity');
+const booking = require('../routes/booking');
 
 app.use('/', auth);
 app.use('/', activity);
@@ -32,3 +33,5 @@ connectDB()
     console.log(error);
     console.log("Error while connecting");
   });
+
+module.exports.handler = serverless(app);

@@ -1,4 +1,4 @@
-# Activity Booking App
+# Activity Booking api
 
 ## Prerequisites
 
@@ -32,7 +32,6 @@ Clone the project from GitHub and run the below command:
 ### 3. Start the Server Locally
 
 - Once the environment variables are set up, you can start the server with the following command:
+- npm start
 
-```bash
-
-```
+Access the API at: http://localhost:5000
